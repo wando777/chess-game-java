@@ -2,7 +2,7 @@ package boardgame;
 
 public class Piece {
 
-	protected Position postition;
+	protected Position position;
 	private Board board;
 
 	// Constructor
