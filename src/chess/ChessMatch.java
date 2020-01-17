@@ -2,16 +2,17 @@ package chess;
 
 import boardgame.Board;
 import boardgame.Position;
+import chess.pieces.King;
 import chess.pieces.Rook;
 
 public class ChessMatch {
 
-	private static final int A = 0;
-	private static final int H = 7;
-	private static final int EIGHT = 7;
-	private static final int ONE = 0;
+	private static final char A = 'a';
+	private static final char H = 'h';
+	private static final char E = 'e';
+	private static final char D = 'd';
 
-	private Board board;
+	protected Board board;
 
 	public ChessMatch() {
 		board = new Board(8, 8);
@@ -29,13 +30,19 @@ public class ChessMatch {
 		return mat;
 	}
 
+	private void placeNewPiece(char column, int row, ChessPiece piece) {
+		board.PlacePiece(piece, new ChessPosition(column, row).toPosition());
+	}
+
 	private void initialSetup() {
 		// White pieces
-		board.PlacePiece(new Rook(board, Color.WHITE), new Position(ONE, A));
-		board.PlacePiece(new Rook(board, Color.WHITE), new Position(ONE, H));
+		placeNewPiece(A, 1, new Rook(board, Color.WHITE));
+		placeNewPiece(H, 1, new Rook(board, Color.WHITE));
+		placeNewPiece(E, 1, new King(board, Color.WHITE));
 
-		board.PlacePiece(new Rook(board, Color.BLACK), new Position(EIGHT, A));
-		board.PlacePiece(new Rook(board, Color.BLACK), new Position(EIGHT, H));
+		placeNewPiece(A, 8, new Rook(board, Color.BLACK));
+		placeNewPiece(H, 8, new Rook(board, Color.BLACK));
+		placeNewPiece(D, 8, new King(board, Color.BLACK));
 	}
 
 }

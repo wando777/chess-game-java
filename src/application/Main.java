@@ -2,6 +2,7 @@ package application;
 
 //import boardgame.Board;
 import chess.ChessMatch;
+import chess.ChessPosition;
 
 public class Main {
 
@@ -13,7 +14,9 @@ public class Main {
 	
 		UI.printBoard(chessMatch.getPieces());
 		
-	
+		ChessPosition cs = new ChessPosition('b',7);
+		
+		System.out.println(cs.getBoardSize());
 	}
 
 }
